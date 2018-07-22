@@ -1,0 +1,15 @@
+{
+  "name": "webserviceassignmentsource",
+  "version": "1.0.0",
+  "description": "project for storing postman tests",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "webservices-soap-StagingTest": "newman run tests/WebServicesForTest.postman_collection.json"
+  },
+  "author": "amit saxena",
+  "dependencies": {
+  "newman": "^3.10.0"
+  }
+}
