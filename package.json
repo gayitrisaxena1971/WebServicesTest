@@ -6,7 +6,7 @@
     "test": "tests"
   },
   "scripts": {
-    "webservices-soap-StagingTest": "newman run tests/WebServicesForTest.postman_collection.json"
+    "webservices-soap-StagingTest": "newman run tests/WebServicesForTest.postman_collection.json --reporters junit --reporter-junit-export /Users/amitsaxena/newman/newman.xml"
   },
   "author": "amit saxena",
   "dependencies": {
