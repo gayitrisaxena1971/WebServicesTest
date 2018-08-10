@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "e88c29b5-f986-40a5-a580-36a9932e905b",
+		"name": "AutomationWebServices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "a85d2c14-4180-40c9-befb-2e512fc07c30",
+			"name": "WebServicesAutomationRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79bc7fb6-13b1-4142-af51-ee9a8e0f6f8d",
+						"type": "text/javascript",
+						"exec": [
+							"tests[data[\"TestCase\"] + \":- TESTURL:- \" + postman.getEnvironmentVariable(\"TESTURL\") + data[\"APIURL\"] + \"| POSTBODY:- \" + data[\"PostBody\"]] = true;",
+							"",
+							"if(data[\"ExpectedStatusCode\"] != \"x\"){",
+							"tests[data[\"TestCase\"] + \":- \" + data[\"Description\"] +\" | STATUS .CSV: \"+ data[\"ExpectedStatusCode\"] + \", POSTMAN: \" + responseCode.code] = responseCode.code === (data[\"ExpectedStatusCode\"]);",
+							"}",
+							"",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+							"});",
+							"",
+							"pm.test(\"Body matches string from CSV File\", function () {",
+							"    pm.expect(pm.response.text()).to.include(data[\"ExpectedResult1\"]);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{PostBody}}"
+				},
+				"url": {
+					"raw": "{{TESTURL}}{{APIURL}}",
+					"host": [
+						"{{TESTURL}}{{APIURL}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

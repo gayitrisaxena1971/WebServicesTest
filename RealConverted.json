@@ -1,0 +1,44 @@
+[
+  {
+    "Sprint": "Sprint1",
+    "TestCase": "TC_Customers_001",
+    "API": "WebService001",
+    "APIURL": "/orchestrator-web-services/webservices/customers.wsdl",
+    "Description": "Customers web serviceTest",
+    "PostBody": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:acc=\"http://www.comarch.com/scb/services/account\" xmlns:str=\"http://www.comarch.com/scb/services/structure\" xmlns:acc1=\"http://www.comarch.com/scb/domain/account\" xmlns:com=\"http://www.comarch.com/scb/domain/common\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <acc:GetAccountBalancesRequest>\n         <str:header>\n            <str:interface>Account.Balance.Synchronization</str:interface>\n            <str:version>1.0</str:version>\n            <str:sourceSystem>CCB</str:sourceSystem>\n            <str:id>MQACCTBALRQ00005</str:id>\n            <str:timestamp>2017-11-06T11:00:24.220</str:timestamp>\n         </str:header>\n         <acc:filter>\n            <acc1:customerId>001400000000000000000023434715</acc1:customerId>\n            <acc1:accountIds>\n               <com:id>0147644680167357</com:id>\n            </acc1:accountIds>\n         </acc:filter>\n      </acc:GetAccountBalancesRequest>\n   </soapenv:Body>\n</soapenv:Envelope>",
+    "ExpectedStatusCode": 200,
+    "ExpectedResult1": 1680843.03,
+    "ExpectedResult2": "x",
+    "ExpectedResult3": "x",
+    "ExpectedResult4": "x",
+    "ExpectedResult5": "x"
+  },
+  {
+    "Sprint": "Sprint1",
+    "TestCase": "TC_Payments_002",
+    "API": "WebService002",
+    "APIURL": "/orchestrator-web-services/webservices/payments.wsdl",
+    "Description": "Payments web serviceTest",
+    "PostBody": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:cus=\"http://www.comarch.com/scb/services/customer\" xmlns:str=\"http://www.comarch.com/scb/services/structure\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <cus:SearchCustomerRequest>\n         <str:header>\n            <str:interface>Customer.Search</str:interface>\n            <str:version>1.0</str:version>\n            <str:sourceSystem>CCB</str:sourceSystem>\n            <str:id>REQ-1</str:id>\n            <str:timestamp>2017-06-26T13:50:58.386</str:timestamp>\n         </str:header>\n         <cus:filter match=\"EXACT\">1021923324568</cus:filter>\n      </cus:SearchCustomerRequest>\n   </soapenv:Body>\n</soapenv:Envelope>",
+    "ExpectedStatusCode": 200,
+    "ExpectedResult1": "COMPANY LIMITED FGFHGFHFHFGHF",
+    "ExpectedResult2": "x",
+    "ExpectedResult3": "x",
+    "ExpectedResult4": "x",
+    "ExpectedResult5": "x"
+  },
+  {
+    "Sprint": "Sprint1",
+    "TestCase": "TC_Products_003",
+    "API": "WebService003",
+    "APIURL": "/orchestrator-web-services/webservices/product.wsdl",
+    "Description": "Product web service test",
+    "PostBody": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:prod=\"http://www.comarch.com/scb/services/product\" xmlns:str=\"http://www.comarch.com/scb/services/structure\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <prod:GetProductsRequest>\n         <str:header>\n            <str:interface>Product.GetList</str:interface>\n            <str:version>1</str:version>\n            <str:sourceSystem>CCB</str:sourceSystem>\n            <str:id>PAY11112113133</str:id>\n            <str:timestamp>2018-01-15T15:39:59.478</str:timestamp>\n         </str:header>\n         <prod:customerId>001400000000000000000023441508</prod:customerId>\n      </prod:GetProductsRequest>\n   </soapenv:Body>\n</soapenv:Envelope>",
+    "ExpectedStatusCode": 200,
+    "ExpectedResult1": "SICOTHBK",
+    "ExpectedResult2": "x",
+    "ExpectedResult3": "x",
+    "ExpectedResult4": "x",
+    "ExpectedResult5": "x"
+  }
+]

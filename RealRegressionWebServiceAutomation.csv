@@ -1,0 +1,51 @@
+Sprint,TestCase,API,APIURL,Description,PostBody,ExpectedStatusCode,ExpectedResult1,ExpectedResult2,ExpectedResult3,ExpectedResult4,ExpectedResult5
+Sprint1,TC_Customers_001,WebService001,/orchestrator-web-services/webservices/customers.wsdl,Customers web serviceTest,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface>Account.Balance.Synchronization</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>MQACCTBALRQ00005</str:id>
+            <str:timestamp>2017-11-06T11:00:24.220</str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId>001400000000000000000023434715</acc1:customerId>
+            <acc1:accountIds>
+               <com:id>0147644680167357</com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,1680843.03,x,x,x,x
+Sprint1,TC_Payments_002,WebService002,/orchestrator-web-services/webservices/payments.wsdl,Payments web serviceTest,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface>Customer.Search</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>REQ-1</str:id>
+            <str:timestamp>2017-06-26T13:50:58.386</str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT"">1021923324568</cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,COMPANY LIMITED FGFHGFHFHFGHF,x,x,x,x
+Sprint1,TC_Products_003,WebService003,/orchestrator-web-services/webservices/product.wsdl,Product web service test,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface>Product.GetList</str:interface>
+            <str:version>1</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>PAY11112113133</str:id>
+            <str:timestamp>2018-01-15T15:39:59.478</str:timestamp>
+         </str:header>
+         <prod:customerId>001400000000000000000023441508</prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,SICOTHBK,x,x,x,x
