@@ -1,0 +1,551 @@
+Sprint,TestCase,API,APIURL,Description,PostBody,ExpectedStatusCode,ExpectedResult1,ExpectedResult2,ExpectedResult3,ExpectedResult4,ExpectedResult5
+Release1,TC_WS_SearchCustomer-001,CustomerSearch,/orchestrator-web-services/webservices/customers.wsdl,With valid inputs,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface>Customer.Search</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>REQ-1</str:id>
+            <str:timestamp>2017-06-26T13:50:58.386</str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT"">1021923324568</cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,001400000000000000000030600021,บริษัท จำกัด FGHFHFGHF,COMPANY LIMITED FGFHGFHFHFGHF,1021923324568,1021923324568
+Release1,TC_WS_SearchCustomer-002,CustomerSearch,/orchestrator-web-services.wsdl,With invalid url,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface>Customer.Search</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>REQ-1</str:id>
+            <str:timestamp>2017-06-26T13:50:58.386</str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT"">1021923324568</cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",404,404 - Not Found,x,x,x,x
+Release1,TC_WS_SearchCustomer-003,CustomerSearch,/orchestrator-web-services/webservices/customers.wsdl,With Minimum Accepted Values In Mandatory Parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface>Customer.Search</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>REQ-1</str:id>
+            <str:timestamp>0001-01-01T01:01:01.001</str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT"">1</cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,UNABLE TO LOCATE CUSTOMER WITH CURRENT SEARCH DATA,x,x,x,x
+Release1,TC_WS_SearchCustomer-004,CustomerSearch,/orchestrator-web-services/webservices/customers.wsdl,With Maximum Accepted Values In Mandatory Parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface>Customer.Search</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>REQ-1</str:id>
+            <str:timestamp>9999-12-31T23:59:59.999</str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT"">9999999999999999999999999999999999999999</cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,UNABLE TO LOCATE CUSTOMER WITH CURRENT SEARCH DATA,x,x,x,x
+Release1,TC_WS_SearchCustomer-005,CustomerSearch,/orchestrator-web-services/webservices/customers.wsdl,With Customer filter Exceeding Length of 40 chas,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface>Customer.Search</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>REQ-1</str:id>
+            <str:timestamp>2017-06-26T13:50:58.386</str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT"">1000000000000000000000000000021923324568</cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,Cannot Retrieve Customer Information,x,x,x,x
+Release1,TC_WS_SearchCustomer-006,CustomerSearch,/orchestrator-web-services/webservices/customers.wsdl,With Invalid Data Type In Non Mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface>&5.5Z</str:interface>
+            <str:version>B3.20</str:version>
+            <str:sourceSystem>523.10</str:sourceSystem>
+            <str:id>454.343</str:id>
+            <str:timestamp>2017-06-26T13:50:58.386</str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT"">1021923324568</cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",400,x,x,x,x,x
+Release1,TC_WS_SearchCustomer-007,CustomerSearch,/orchestrator-web-services/webservices/customers.wsdl,With Invalid Mandatory Customer Filter,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface>Customer.Search</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>REQ-1</str:id>
+            <str:timestamp>2017-06-26T13:50:58.386</str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT"">#102192332456</cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,UNABLE TO LOCATE CUSTOMER WITH CURRENT SEARCH DATA,x,x,x,x
+Release1,TC_WS_SearchCustomer-008,CustomerSearch,/orchestrator-web-services/webservices/customers.wsdl,Without Mandatory Customer Filter,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface>Customer.Search</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>REQ-1</str:id>
+            <str:timestamp>2017-06-26T13:50:58.386</str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT""></cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,INVALID ID SEARCH,x,x,x,x
+Release1,TC_WS_SearchCustomer-009,CustomerSearch,/orchestrator-web-services/webservices/customers.wsdl,With Invalid DateTime Stamp,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface>Customer.Search</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>REQ-1</str:id>
+            <str:timestamp>2017-15-26T13:50:58.386</str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT"">1021923324568</cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",500,Validation error,x,x,x,x
+Release1,TC_WS_SearchCustomer-010,CustomerSearch,/orchestrator-web-services/webservices/customers.wsdl,Without DateTime Stamp,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface>Customer.Search</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>REQ-1</str:id>
+            <str:timestamp></str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT"">1021923324568</cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",500,Validation error,x,x,x,x
+Release1,TC_WS_SearchCustomer-011,CustomerSearch,/orchestrator-web-services/webservices/customers.wsdl,Without Any Input Values In Non-Mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:cus=""http://www.comarch.com/scb/services/customer"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cus:SearchCustomerRequest>
+         <str:header>
+            <str:interface></str:interface>
+            <str:version></str:version>
+            <str:sourceSystem></str:sourceSystem>
+            <str:id></str:id>
+            <str:timestamp>2017-06-26T13:50:58.386</str:timestamp>
+         </str:header>
+         <cus:filter match=""EXACT"">1021923324568</cus:filter>
+      </cus:SearchCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,001400000000000000000030600021,บริษัท จำกัด FGHFHFGHF,COMPANY LIMITED FGFHGFHFHFGHF,1021923324568,1021923324568
+Release1,TC_WS_ProductList-001,ProductList,/orchestrator-web-services/webservices/product.wsdl,for a particular customer by posting valid inputs with right URL,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface>Product.GetList</str:interface>
+            <str:version>1</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>PAY11112113133</str:id>
+            <str:timestamp>2018-01-15T15:39:59.478</str:timestamp>
+         </str:header>
+         <prod:customerId>001400000000000000000023441508</prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,0147644680167187,10000.00,10000.00,SICOTHBK,ACT
+Release1,TC_WS_ProductList-002,ProductList,/orchestrator-web-services.wsdl,for a particular customer with valid inputs but with invalid /wrong URL,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface>Product.GetList</str:interface>
+            <str:version>1</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>PAY11112113133</str:id>
+            <str:timestamp>2018-01-15T15:39:59.478</str:timestamp>
+         </str:header>
+         <prod:customerId>001400000000000000000023441508</prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",404,x,x,x,x,x
+Release1,TC_WS_ProductList-003,ProductList,/orchestrator-web-services/webservices/product.wsdl,for a particular  customer with by posting request with minimum accepted values  for mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface>Product.GetList</str:interface>
+            <str:version>1</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>PAY11112113133</str:id>
+            <str:timestamp>0001-01-01T01:01:01.001</str:timestamp>
+         </str:header>
+         <prod:customerId>1</prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,Invalid format for CustomerID,x,x,x,x
+Release1,TC_WS_ProductList-004,ProductList,/orchestrator-web-services/webservices/product.wsdl,for a particular  customer with by posting request with maximum accepted values  for mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface>Product.GetList</str:interface>
+            <str:version>1</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>PAY11112113133</str:id>
+            <str:timestamp>9999-12-31T23:59:59.999</str:timestamp>
+         </str:header>
+         <prod:customerId>0014000000000000000000000000000023441508</prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,Invalid format for CustomerID,x,x,x,x
+Release1,TC_WS_ProductList-005,ProductList,/orchestrator-web-services/webservices/product.wsdl,for a particular customer with by posting request with more than maximum accepted values  for mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface>Product.GetList</str:interface>
+            <str:version>1</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>PAY11112113133</str:id>
+            <str:timestamp>2018-01-15T15:39:59.478</str:timestamp>
+         </str:header>
+         <prod:customerId>00140000000000000000000000000000023441508</prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",500,Validation error,x,x,x,x
+Release1,TC_WS_ProductList-006,ProductList,/orchestrator-web-services/webservices/product.wsdl,for a particular customer with by posting request with invalid inputs in non- mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface>Product.GetList</str:interface>
+            <str:version>%1&</str:version>
+            <str:sourceSystem>$CCB</str:sourceSystem>
+            <str:id>@PAY11112113133</str:id>
+            <str:timestamp>2018-01-15T15:39:59.478</str:timestamp>
+         </str:header>
+         <prod:customerId>001400000000000000000023441508</prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",400,x,x,x,x,x
+Release1,TC_WS_ProductList-007,ProductList,/orchestrator-web-services/webservices/product.wsdl,for a particular customer with by posting request with invalid customer id,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface>Product.GetList</str:interface>
+            <str:version>1</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>PAY11112113133</str:id>
+            <str:timestamp>2018-01-15T15:39:59.478</str:timestamp>
+         </str:header>
+         <prod:customerId>X00140000000000000000002344150Y</prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,Invalid format for CustomerID,x,x,x,x
+Release1,TC_WS_ProductList-008,ProductList,/orchestrator-web-services/webservices/product.wsdl,for a particular customer with by posting request without customer id,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface>Product.GetList</str:interface>
+            <str:version>1</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>PAY11112113133</str:id>
+            <str:timestamp>2018-01-15T15:39:59.478</str:timestamp>
+         </str:header>
+         <prod:customerId></prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,INVALID ID SEARCH,x,x,x,x
+Release1,TC_WS_ProductList-009,ProductList,/orchestrator-web-services/webservices/product.wsdl,for a particular customer with by posting request with invalid DateTime stamp,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface>Product.GetList</str:interface>
+            <str:version>1</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>PAY11112113133</str:id>
+            <str:timestamp>0000-01-15T15:39:59.478</str:timestamp>
+         </str:header>
+         <prod:customerId>001400000000000000000023441508</prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",500,Validation error,x,x,x,x
+Release1,TC_WS_ProductList-010,ProductList,/orchestrator-web-services/webservices/product.wsdl,for a particular customer with by posting request without DateTime stamp,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface>Product.GetList</str:interface>
+            <str:version>1</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>PAY11112113133</str:id>
+            <str:timestamp></str:timestamp>
+         </str:header>
+         <prod:customerId>001400000000000000000023441508</prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",500,Validation error,x,x,x,x
+Release1,TC_WS_ProductList-011,ProductList,/orchestrator-web-services/webservices/product.wsdl,for a particular customer with by posting request without any values in non-mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:prod=""http://www.comarch.com/scb/services/product"" xmlns:str=""http://www.comarch.com/scb/services/structure"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:GetProductsRequest>
+         <str:header>
+            <str:interface></str:interface>
+            <str:version></str:version>
+            <str:sourceSystem></str:sourceSystem>
+            <str:id></str:id>
+            <str:timestamp>2018-11-15T15:39:59.478</str:timestamp>
+         </str:header>
+         <prod:customerId>001400000000000000000023441508</prod:customerId>
+      </prod:GetProductsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,0147645011635327,10000.00,10000.00,SICOTHBK,ACT
+Release1,TC_WS_AccountBalances-001,AccountBalances,/orchestrator-web-services/webservices/payments.wsdl,for a particular customer by posting valid inputs with right UR,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface>Account.Balance.Synchronization</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>MQACCTBALRQ00005</str:id>
+            <str:timestamp>2017-11-06T11:00:24.220</str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId>001400000000000000000023434715</acc1:customerId>
+            <acc1:accountIds>
+               <com:id>0147644680167357</com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,0147644680167357,2680843.03,1680843.03,1000000.00,0.00
+Release1,TC_WS_AccountBalances-002,AccountBalances,/orchestrator-web-services.wsdl,for a particular customer with valid inputs but with invalid UR,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface>Account.Balance.Synchronization</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>MQACCTBALRQ00005</str:id>
+            <str:timestamp>2017-11-06T11:00:24.220</str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId>001400000000000000000023434715</acc1:customerId>
+            <acc1:accountIds>
+               <com:id>0147644680167357</com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",404,x,x,x,x,x
+Release1,TC_WS_AccountBalances-003,AccountBalances,/orchestrator-web-services/webservices/payments.wsdl,for a particular  customer with by posting request with minimum accepted values  for mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface>Account.Balance.Synchronization</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>MQACCTBALRQ00005</str:id>
+            <str:timestamp>0001-01-01T01:01:01.001</str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId>001400000000000000000023434715</acc1:customerId>
+            <acc1:accountIds>
+               <com:id>1</com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,x,x,x,x,x
+Release1,TC_WS_AccountBalances-004,AccountBalances,/orchestrator-web-services/webservices/payments.wsdl,for a particular  customer with by posting request with maximum accepted values  for mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface>Account.Balance.Synchronization</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>MQACCTBALRQ00005</str:id>
+            <str:timestamp>9999-12-31T23:59:59.999</str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId>9999999999999999999999999999999999999999</acc1:customerId>
+            <acc1:accountIds>
+               <com:id>9999999999999999999999999999999999999999</com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,No data found,x,x,x,x
+Release1,TC_WS_AccountBalances-005,AccountBalances,/orchestrator-web-services/webservices/payments.wsdl,for a particular customer with by posting request with more than maximum accepted values  for mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface>Account.Balance.Synchronization</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>MQACCTBALRQ00005</str:id>
+            <str:timestamp>2017-11-06T11:00:24.220</str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId>00140000000000000000000000000000023434715</acc1:customerId>
+            <acc1:accountIds>
+               <com:id>01476446800000000000000000000000000167357</com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",500,Validation error,x,x,x,x
+Release1,TC_WS_AccountBalances-006,AccountBalances,/orchestrator-web-services/webservices/payments.wsdl,for a particular customer with by posting request with invalid inputs in non- mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface>Account.Balance.Synchronization</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>MQACCTBALRQ00005&</str:id>
+            <str:timestamp>2017-11-06T11:00:24.220</str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId>001400000000000000000023434715</acc1:customerId>
+            <acc1:accountIds>
+               <com:id>0147644680167357</com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",400,x,x,x,x,x
+Release1,TC_WS_AccountBalances-007,AccountBalances,/orchestrator-web-services/webservices/payments.wsdl,for a particular customer with by posting request with invalid customer and account id,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface>Account.Balance.Synchronization</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>MQACCTBALRQ00005</str:id>
+            <str:timestamp>2017-11-06T11:00:24.220</str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId>A23434</acc1:customerId>
+            <acc1:accountIds>
+               <com:id>A014764468016735</com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,No data found,x,x,x,x
+Release1,TC_WS_AccountBalances-008,AccountBalances,/orchestrator-web-services/webservices/payments.wsdl,for a particular customer with by posting request without customer id & account id,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface>Account.Balance.Synchronization</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>MQACCTBALRQ00005</str:id>
+            <str:timestamp>2017-11-06T11:00:24.220</str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId></acc1:customerId>
+            <acc1:accountIds>
+               <com:id></com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,INVALID ID SEARCH,x,x,x,x
+Release1,TC_WS_AccountBalances-009,AccountBalances,/orchestrator-web-services/webservices/payments.wsdl,for a particular customer with by posting request with invalid DateTime stamp,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface>Account.Balance.Synchronization</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>MQACCTBALRQ00005</str:id>
+            <str:timestamp>2017-11-33T11:00:24.220</str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId>001400000000000000000023434715</acc1:customerId>
+            <acc1:accountIds>
+               <com:id>0147644680167357</com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",500,Validation error,x,x,x,x
+Release1,TC_WS_AccountBalances-010,AccountBalances,/orchestrator-web-services/webservices/payments.wsdl,for a particular customer with by posting request without DateTime stamp,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface>Account.Balance.Synchronization</str:interface>
+            <str:version>1.0</str:version>
+            <str:sourceSystem>CCB</str:sourceSystem>
+            <str:id>MQACCTBALRQ00005</str:id>
+            <str:timestamp></str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId>001400000000000000000023434715</acc1:customerId>
+            <acc1:accountIds>
+               <com:id>0147644680167357</com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",500,Validation error,x,x,x,x
+Release1,TC_WS_AccountBalances-011,AccountBalances,/orchestrator-web-services/webservices/payments.wsdl,for a particular customer with by posting request without any values in non-mandatory parameters,"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:acc=""http://www.comarch.com/scb/services/account"" xmlns:str=""http://www.comarch.com/scb/services/structure"" xmlns:acc1=""http://www.comarch.com/scb/domain/account"" xmlns:com=""http://www.comarch.com/scb/domain/common"">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:GetAccountBalancesRequest>
+         <str:header>
+            <str:interface></str:interface>
+            <str:version></str:version>
+            <str:sourceSystem></str:sourceSystem>
+            <str:id></str:id>
+            <str:timestamp>2017-12-11T11:00:24.220</str:timestamp>
+         </str:header>
+         <acc:filter>
+            <acc1:customerId>001423434715</acc1:customerId>
+            <acc1:accountIds>
+               <com:id>0147644680167357</com:id>
+            </acc1:accountIds>
+         </acc:filter>
+      </acc:GetAccountBalancesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>",200,0147644680167357,2680843.03,1680843.03,1000000.00,0.00
